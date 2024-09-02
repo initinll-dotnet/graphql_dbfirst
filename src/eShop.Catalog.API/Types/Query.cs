@@ -1,5 +1,4 @@
 ﻿using eShop.Catalog.API.Data;
-using eShop.Catalog.API.Filters;
 using eShop.Catalog.API.Models;
 
 namespace eShop.Catalog.API.Types;

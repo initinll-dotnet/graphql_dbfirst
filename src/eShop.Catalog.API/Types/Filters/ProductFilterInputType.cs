@@ -1,8 +1,7 @@
 ﻿using eShop.Catalog.API.Models;
-
 using HotChocolate.Data.Filters;
 
-namespace eShop.Catalog.API.Filters;
+namespace eShop.Catalog.API.Types.Filters;
 
 public class ProductFilterInputType : FilterInputType<Product>
 {

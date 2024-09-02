@@ -3,7 +3,7 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace eShop.Catalog.API.Middlewares;
+namespace eShop.Catalog.API.Types.Configurations;
 
 public static class UseToUpperObjectFieldDescriptorExtensions
 {

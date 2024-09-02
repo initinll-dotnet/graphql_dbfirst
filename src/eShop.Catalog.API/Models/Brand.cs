@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-using static eShop.Catalog.API.Middlewares.UseToUpperObjectFieldDescriptorExtensions;
+using static eShop.Catalog.API.Types.Configurations.UseToUpperObjectFieldDescriptorExtensions;
 
 namespace eShop.Catalog.API.Models;
 

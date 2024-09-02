@@ -1,9 +1,6 @@
 using eShop.Catalog.API.Data;
-using eShop.Catalog.API.Filters;
+using eShop.Catalog.API.Extensions;
 using eShop.Catalog.API.Migrations;
-using eShop.Catalog.API.Types;
-
-using HotChocolate.Types.Pagination;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -18,21 +15,7 @@ builder.Services
 
 builder.Services
     .AddGraphQLServer()
-    .AddQueryType<Query>()
-    .AddType<ProductFilterInputType>()
-    .SetPagingOptions(new PagingOptions
-    {
-        DefaultPageSize = 2,
-        MaxPageSize = 5,
-        AllowBackwardPagination = false,
-        RequirePagingBoundaries = true,
-    })
-    .AddFiltering(f =>
-    {
-        f.AddDefaults()
-            .BindRuntimeType<string, CustomStringOperationFilterInputType>();
-    })
-    .AddProjections();
+    .AddGraphQLConventions();
 
 var app = builder.Build();
 
