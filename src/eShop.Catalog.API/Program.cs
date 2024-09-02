@@ -15,7 +15,8 @@ builder.Services
 
 builder.Services
     .AddGraphQLServer()
-    .AddQueryType<Query>();
+    .AddQueryType<Query>()
+    .AddProjections();
 
 var app = builder.Build();
 
