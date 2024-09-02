@@ -1,12 +1,12 @@
 ﻿using eShop.Catalog.API.Data;
 using eShop.Catalog.API.Models;
 
-using Microsoft.EntityFrameworkCore;
-
 namespace eShop.Catalog.API.Types;
 
 public class Query
 {
+    // overriding global paging settings
+    [UsePaging(DefaultPageSize = 1, MaxPageSize = 10)]
     [UseProjection]
     public IQueryable<Product> GetProducts(CatalogContext dbContext)
     {
