@@ -1,5 +1,7 @@
 using eShop.Catalog.API.Data;
 using eShop.Catalog.API.Migrations;
+using eShop.Catalog.API.Types;
+
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +14,8 @@ builder.Services
     .AddMigration<CatalogContext, CatalogContextSeed>();
 
 builder.Services
-    .AddGraphQLServer();
+    .AddGraphQLServer()
+    .AddQueryType<Query>();
 
 var app = builder.Build();
 
