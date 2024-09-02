@@ -1,5 +1,7 @@
 ﻿using eShop.Catalog.API.Types;
 using eShop.Catalog.API.Types.Filters;
+using eShop.Catalog.API.Types.Sortings;
+
 using HotChocolate.Execution.Configuration;
 using HotChocolate.Types.Pagination;
 
@@ -13,6 +15,7 @@ public static class CustomRequestExecutorBuilderExtension
         builder
             .AddQueryType<Query>()
             .AddType<ProductFilterInputType>()
+            .AddType<ProductSortInputType>()
             .SetPagingOptions(new PagingOptions
             {
                 DefaultPageSize = 2,
@@ -25,6 +28,7 @@ public static class CustomRequestExecutorBuilderExtension
                 f.AddDefaults()
                     .BindRuntimeType<string, CustomStringOperationFilterInputType>();
             })
+            .AddSorting()
             .AddProjections();
 
         return builder;

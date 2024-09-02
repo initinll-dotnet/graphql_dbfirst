@@ -25,6 +25,7 @@ public class Query
     [UseProjection]
     [UseFiltering]
     //[UseFiltering<ProductFilterInputType>]
+    [UseSorting]
     public IQueryable<Product> GetProducts(CatalogContext dbContext)
     {
         return dbContext.Products;
