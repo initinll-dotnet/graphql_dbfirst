@@ -13,9 +13,6 @@ public static class CustomRequestExecutorBuilderExtension
         this IRequestExecutorBuilder builder)
     {
         builder
-            .AddQueryType<Query>()
-            .AddType<ProductFilterInputType>()
-            .AddType<ProductSortInputType>()
             .SetPagingOptions(new PagingOptions
             {
                 DefaultPageSize = 2,

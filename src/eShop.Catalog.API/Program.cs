@@ -15,6 +15,7 @@ builder.Services
 
 builder.Services
     .AddGraphQLServer()
+    .AddCatalogTypes()
     .AddGraphQLConventions();
 
 var app = builder.Build();

@@ -3,6 +3,7 @@ using eShop.Catalog.API.Models;
 
 namespace eShop.Catalog.API.Types;
 
+[QueryType]
 public class Query
 {
     [UsePaging(DefaultPageSize = 1, MaxPageSize = 10)]
