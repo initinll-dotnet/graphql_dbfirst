@@ -1,5 +1,9 @@
-﻿using eShop.Catalog.API.Data;
-using eShop.Catalog.API.Models;
+﻿using eShop.Catalog.API.Models;
+using eShop.Catalog.API.Services;
+
+using HotChocolate.Pagination;
+
+using HotChocolate.Types.Pagination;
 
 namespace eShop.Catalog.API.Types;
 
@@ -7,17 +11,37 @@ namespace eShop.Catalog.API.Types;
 public static class ProductTypeQueries
 {
     [UsePaging]
-    [UseProjection]
-    [UseFiltering]
-    public static IQueryable<ProductType> GetProductTypes(CatalogContext dbContext)
+    public static async Task<Connection<ProductType>> GetProductTypesAsync(
+        PagingArguments pagingArguments,
+        ProductTypeService productTypeService,
+        CancellationToken cancellationToken)
     {
-        return dbContext.ProductTypes;
+        return await productTypeService
+            .GetProductTypesAsync(pagingArguments, cancellationToken)
+            .ToConnectionAsync();
     }
 
-    [UseFirstOrDefault]
-    [UseProjection]
-    public static IQueryable<ProductType> GetProductTypeById(int id, CatalogContext dbContext)
+    public static async Task<ProductType?> GetProductByIdAsync(
+        int id,
+        ProductTypeService productTypeService,
+        CancellationToken cancellationToken)
     {
-        return dbContext.ProductTypes.Where(p => p.Id == id);
+        return await productTypeService
+            .GetProductTypesByIdAsync(id, cancellationToken);
     }
+
+    //[UsePaging]
+    //[UseProjection]
+    //[UseFiltering]
+    //public static IQueryable<ProductType> GetProductTypes(CatalogContext dbContext)
+    //{
+    //    return dbContext.ProductTypes;
+    //}
+
+    //[UseFirstOrDefault]
+    //[UseProjection]
+    //public static IQueryable<ProductType> GetProductTypeById(int id, CatalogContext dbContext)
+    //{
+    //    return dbContext.ProductTypes.Where(p => p.Id == id);
+    //}
 }

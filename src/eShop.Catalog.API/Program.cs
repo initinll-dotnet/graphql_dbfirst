@@ -1,6 +1,7 @@
 using eShop.Catalog.API.Data;
 using eShop.Catalog.API.Extensions;
 using eShop.Catalog.API.Migrations;
+using eShop.Catalog.API.Services;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,11 @@ builder.Services
 
 builder.Services
     .AddMigration<CatalogContext, CatalogContextSeed>();
+
+builder.Services
+    .AddScoped<BrandService>()
+    .AddScoped<ProductService>()
+    .AddScoped<ProductTypeService>();
 
 builder.Services
     .AddGraphQLServer()

@@ -1,6 +1,4 @@
-﻿using eShop.Catalog.API.Types;
-using eShop.Catalog.API.Types.Filters;
-using eShop.Catalog.API.Types.Sortings;
+﻿using eShop.Catalog.API.Types.Filters;
 
 using HotChocolate.Execution.Configuration;
 using HotChocolate.Types.Pagination;
@@ -17,7 +15,7 @@ public static class CustomRequestExecutorBuilderExtension
             {
                 DefaultPageSize = 2,
                 MaxPageSize = 5,
-                AllowBackwardPagination = false,
+                AllowBackwardPagination = true,
                 RequirePagingBoundaries = true,
             })
             .AddFiltering(f =>
@@ -26,7 +24,8 @@ public static class CustomRequestExecutorBuilderExtension
                     .BindRuntimeType<string, CustomStringOperationFilterInputType>();
             })
             .AddSorting()
-            .AddProjections();
+            .AddProjections()
+            .AddPagingArguments();
 
         return builder;
     }

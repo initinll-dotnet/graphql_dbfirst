@@ -1,4 +1,5 @@
 ﻿using eShop.Catalog.API.Models;
+
 using HotChocolate.Data.Filters;
 
 namespace eShop.Catalog.API.Types.Filters;
